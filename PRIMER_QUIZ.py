@@ -1,0 +1,52 @@
+# Juego-de-P_P_T_V3.py
+#versión 3
+
+#Librerias
+import random
+
+from time import time
+#Ttiempo inicial
+tiempo_inicial = time()
+#Opciones
+opciones = ['piedra', 'papel', 'tijera']
+jugador_gana = 0
+computadora_gana = 0
+while jugador_gana < 3 and computadora_gana < 3:
+    eleccion_jugador = input("Elige piedra, papel o tijera: ").lower()
+    eleccion_computadora = random.choice(opciones)
+
+    if eleccion_jugador not in opciones:
+        print("Esa opción no es válida. Inténtalo de nuevo.")
+        continue
+
+    print(f"Tú elegiste {eleccion_jugador}. La computadora eligió {eleccion_computadora}.")
+
+    if eleccion_jugador == eleccion_computadora:
+        print("¡Empate!")
+    elif (eleccion_jugador == 'piedra' and eleccion_computadora == 'tijera') or (eleccion_jugador == 'papel' and eleccion_computadora == 'piedra') or (eleccion_jugador == 'tijera' and eleccion_computadora == 'papel'):
+        print("¡Ganaste!")
+        jugador_gana += 1
+    else:
+        print("¡Perdiste!")
+        computadora_gana += 1
+
+    print(f"Marcador: jugador {jugador_gana}, Computadora {computadora_gana}\n")
+
+        
+    tiempo_final = time()
+    tiempo_total = tiempo_final - tiempo_inicial
+    print(tiempo_total*1000)
+    print(f"El tiempo de ejcución fue de: {tiempo_total} segundos ")
+
+
+
+
+
+if jugador_gana == 3:
+    print("¡Felicidades, ganaste!")
+else:
+    print("Lo siento, perdiste. ¡Inténtalo de nuevo!")
+
+    
+
+    #SE REALIZO EL PRIMER COMMIT DESDE CONSOLA
