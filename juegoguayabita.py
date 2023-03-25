@@ -16,3 +16,16 @@ def hacer_apuesta(jugador, apuesta_minima):
         print(f"{jugador['nombre']} ha apostado {apuesta} (saldo actual: {jugador['saldo']})")
         return True
 
+
+#Crear una función para que cada jugador lance el dado: Esta función llamará a la función lanzar_dado() y devolverá el resultado. Si el jugador saca 1 o 6, perderá su apuesta y se eliminará del juego.
+def lanzar_jugador(jugador):
+    resultado = lanzar_dado()
+    print(f"{jugador['nombre']} ha sacado un {resultado}")
+    if resultado == 1 or resultado == 6:
+        print(f"{jugador['nombre']} ha perdido su apuesta de {jugador['apuesta']} (saldo actual: {jugador['saldo']})")
+        jugador["eliminado"] = True
+    elif resultado == 2 or resultado == 3:
+        print(f"{jugador['nombre']} vuelve a lanzar...")
+        lanzar_jugador(jugador)
+    elif resultado == 4 or resultado == 5:
+        print(f"{jugador['nombre']} pasa")
